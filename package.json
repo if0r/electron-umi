@@ -1,7 +1,7 @@
 {
   "name": "electron-umi",
   "description": "`@umijs/max` 模板项目，更多功能参考 [Umi Max 简介](https://umijs.org/docs/max/introduce)",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": ".",
   "main": "main.js",
   "build": {

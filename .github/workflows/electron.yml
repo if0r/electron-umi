@@ -45,7 +45,7 @@ jobs:
       - name: yarn build
         run: |
           yarn ebm
-          npx rimraf -g "build/**/!(*.dmg|*.exe)"
+          npx rimraf -g "build/**/!(*.dmg|*.exe|*.yml)"
           ls build/
         env:       
           ELECTRON_BUILD: 'true'

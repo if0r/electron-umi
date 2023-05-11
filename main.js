@@ -1,6 +1,6 @@
 // 引入electron并创建一个Browserwindow
-import { autoUpdater } from 'electron-updater'
 const { app, BrowserWindow, protocol, session, dialog } = require('electron');
+const { autoUpdater } = require('electron-updater');
 const path = require('path');
 const url = require('url');
 
@@ -29,10 +29,18 @@ async function createWindow() {
   });
 
   if (process.env.UMI_ENV === 'dev') {
-    //测试时使用 加载应用 适用于 react 项目
-    mainWindow.loadURL('http://localhost:8000');
-    // 打开开发者工具
-    mainWindow.webContents.openDevTools();
+    // //测试时使用 加载应用 适用于 react 项目
+    // mainWindow.loadURL('http://localhost:8000');
+    // // 打开开发者工具
+    // mainWindow.webContents.openDevTools();
+    await mainWindow.loadURL(
+      url.format({
+        pathname: path.join(__dirname, 'dist/index.html'),
+        protocol: 'file:',
+        slashes: true,
+      }),
+    );
+    await autoUpdater.checkForUpdatesAndNotify()
   } else {
     //打包时加载本地文件
     // 加载应用 electron-quick-start中默认的加载入口

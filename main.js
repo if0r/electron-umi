@@ -1,14 +1,16 @@
 // 引入electron并创建一个Browserwindow
+import { autoUpdater } from 'electron-updater'
 const { app, BrowserWindow, protocol, session, dialog } = require('electron');
 const path = require('path');
 const url = require('url');
+
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 // 保持window对象的全局引用,避免JavaScript对象被垃圾回收时,窗口被自动关闭.
 let mainWindow;
 
-function createWindow() {
+async function createWindow() {
   // Create the browser window.
   // 创建浏览器窗口
   mainWindow = new BrowserWindow({
@@ -34,13 +36,14 @@ function createWindow() {
   } else {
     //打包时加载本地文件
     // 加载应用 electron-quick-start中默认的加载入口
-    mainWindow.loadURL(
+    await mainWindow.loadURL(
       url.format({
         pathname: path.join(__dirname, 'dist/index.html'),
         protocol: 'file:',
         slashes: true,
       }),
     );
+    await autoUpdater.checkForUpdatesAndNotify()
     // mainWindow.loadURL(`file://${__dirname}/index.html`);
   }
 

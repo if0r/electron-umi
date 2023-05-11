@@ -10,7 +10,7 @@ const url = require('url');
 // 保持window对象的全局引用,避免JavaScript对象被垃圾回收时,窗口被自动关闭.
 let mainWindow;
 
-async function createWindow() {
+function createWindow() {
   // Create the browser window.
   // 创建浏览器窗口
   mainWindow = new BrowserWindow({
@@ -28,32 +28,15 @@ async function createWindow() {
     },
   });
 
-  if (process.env.UMI_ENV === 'dev') {
-    // //测试时使用 加载应用 适用于 react 项目
-    // mainWindow.loadURL('http://localhost:8000');
-    // // 打开开发者工具
-    // mainWindow.webContents.openDevTools();
-    await mainWindow.loadURL(
-      url.format({
-        pathname: path.join(__dirname, 'dist/index.html'),
-        protocol: 'file:',
-        slashes: true,
-      }),
-    );
-    await autoUpdater.checkForUpdatesAndNotify()
-  } else {
     //打包时加载本地文件
     // 加载应用 electron-quick-start中默认的加载入口
-    await mainWindow.loadURL(
+    mainWindow.loadURL(
       url.format({
         pathname: path.join(__dirname, 'dist/index.html'),
         protocol: 'file:',
         slashes: true,
       }),
     );
-    await autoUpdater.checkForUpdatesAndNotify()
-    // mainWindow.loadURL(`file://${__dirname}/index.html`);
-  }
 
   // Emitted when the window is closed.
   // 当窗口关闭时调用的方法

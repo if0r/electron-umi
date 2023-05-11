@@ -22,11 +22,6 @@
       "target": {
         "target": "dmg"
       }
-    },
-    "win": {
-      "target": {
-        "target": "nsis"
-      }
     }
   },
   "repository": {
@@ -40,7 +35,7 @@
   "private": true,
   "author": "ifor <ifor@cloras.io>",
   "scripts": {
-    "ebm": "yarn build && electron-builder --mac",
+    "ebm": "yarn build && electron-builder --mac --win",
     "eb": "yarn build && electron .",
     "dev": "max dev",
     "build": "max build",

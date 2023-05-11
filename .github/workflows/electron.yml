@@ -1,0 +1,72 @@
+
+# Workflow's name
+name: Build Electron App # For Win/Mac
+
+# Workflow's trigger
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+
+# Workflow's jobs
+jobs:
+  # job's id
+  release:
+    # job's name
+    name: build and release electron app
+    runs-on: macos-latest
+    # the type of machine to run the job on
+    # runs-on: ${{ matrix.os }}
+
+    # create a build matrix for jobs
+    # strategy:
+    #   # fail-fast: false
+    #   matrix:
+    #     os: [macos-10.15] #windows-2019, 
+
+    # create steps
+    steps:
+      # step1: check out repository
+      - name: Check out git repository
+        uses: actions/checkout@v3
+      # step2: install node env
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: 'yarn'
+
+      # step3: npm install
+      - name: yarn install
+        run: yarn install
+
+      # step4: build app for mac
+      - name: yarn build
+        run: |
+          yarn ebm
+          npx rimraf -g "build/**/!(*.dmg|*.exe)"
+          ls build/
+        env:       
+          ELECTRON_BUILD: 'true'
+          GH_TOKEN: ${{ secrets.GH_TOKEN }} 
+          
+      # step6: upload artifacts
+      # - name: upload artifacts
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: build-artifact
+      #     path: dist/
+      #     retention-days: 1
+      #   with:
+      #     name: ${{ matrix.os }}
+      #     path: build
+
+      # step7: create release
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/v')
+        with:
+          files: "build/**"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }} 

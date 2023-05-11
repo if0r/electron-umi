@@ -2,7 +2,28 @@
   "name": "electron-umi",
   "description": "`@umijs/max` 模板项目，更多功能参考 [Umi Max 简介](https://umijs.org/docs/max/introduce)",
   "version": "0.0.1",
-  "main": ".eslintrc.js",
+  "homepage": ".",
+  "main": "main.js",
+  "build": {
+    "appId": "electron-umi",
+    "directories": {
+      "output": "build"
+    },
+    "files": [
+      "dist/**/*",
+      "main.js"
+    ],
+    "mac": {
+      "target": {
+        "target": "dmg"
+      }
+    },
+    "win": {
+      "target": {
+        "target": "nsis"
+      }
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/if0r/electron-umi.git"
@@ -11,15 +32,16 @@
   "bugs": {
     "url": "https://github.com/if0r/electron-umi/issues"
   },
-  "homepage": "https://github.com/if0r/electron-umi#readme",
   "private": true,
   "author": "ifor <ifor@cloras.io>",
   "scripts": {
+    "ebm": "yarn build && electron-builder --mac",
     "dev": "max dev",
     "build": "max build",
     "format": "prettier --cache --write .",
     "prepare": "husky install",
     "postinstall": "max setup",
+    "release": "standard-version",
     "setup": "max setup",
     "start": "npm run dev"
   },
@@ -32,11 +54,14 @@
   "devDependencies": {
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
+    "electron": "^24.3.0",
+    "electron-builder": "^23.6.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
     "prettier": "^2.8.7",
     "prettier-plugin-organize-imports": "^3.2.2",
     "prettier-plugin-packagejson": "^2.4.3",
+    "standard-version": "^9.5.0",
     "typescript": "^5.0.3"
   }
 }

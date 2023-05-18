@@ -45,7 +45,6 @@ jobs:
       - name: yarn build
         run: |
           yarn ebm
-          npx rimraf -g "build/**/!(*.dmg|*.exe|*.yml|*.zip)"
           ls build/
         env:       
           ELECTRON_BUILD: 'true'
@@ -67,6 +66,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/v')
         with:
-          files: "build/**"
+          files: "build/*.exe"
+          files: "build/*.yml"
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }} 

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.11](https://github.com/if0r/electron-umi/compare/v0.0.10...v0.0.11) (2023-05-18)
+
+
+### Features
+
+* remove @ant-design/icons ([621fc2b](https://github.com/if0r/electron-umi/commit/621fc2b9a0fe0cd7082540aef3112361f0c078b6))
+
 ### [0.0.10](https://github.com/if0r/electron-umi/compare/v0.0.9...v0.0.10) (2023-05-18)
 
 

@@ -5,24 +5,20 @@
   "homepage": ".",
   "main": "main.js",
   "build": {
-    "publish": {
-      "provider": "github",
-      "owner": "if0r",
-      "repo": "electron-umi"
-    },
-    "appId": "electron-umi",
+    "appId": "ElectronUmi",
     "directories": {
       "output": "build"
     },
     "files": [
       "dist/**/*",
-      "main.js"
+      "main.js",
+      "installer.nsh"
     ],
-    "mac": {
-      "target": {
-        "target": "dmg"
-      }
-    }
+    "nsis": {
+      "include": "installer.nsh"
+    },
+    "compression": "store",
+    "asar": "true"
   },
   "repository": {
     "type": "git",
@@ -35,7 +31,7 @@
   "private": true,
   "author": "ifor <ifor@cloras.io>",
   "scripts": {
-    "ebm": "yarn build && electron-builder --mac --win",
+    "ebm": "yarn build && electron-builder build --win",
     "eb": "yarn build && electron .",
     "dev": "max dev",
     "build": "max build",

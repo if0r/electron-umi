@@ -10,6 +10,69 @@ const url = require('url');
 // 保持window对象的全局引用,避免JavaScript对象被垃圾回收时,窗口被自动关闭.
 let mainWindow;
 
+function checkUpdate(){
+  autoUpdater.setFeedURL('http://192.168.1.79:8080/updater/')  //设置要检测更新的路径
+  
+  //检测更新
+  autoUpdater.checkForUpdates().then(it => {
+    const downloadPromise = it.downloadPromise
+    if (downloadPromise === null) {
+      dialog.showMessageBox({
+        type: 'info',
+        title: 'info',
+        message: 'downloadPromise === null'
+      })
+      return
+    }
+
+    downloadPromise.then(() => {
+      dialog.showMessageBox({
+        type: 'info',
+        title: 'info',
+        message: '新版本提醒'
+      })
+    })
+  })
+  
+  //监听'error'事件
+  autoUpdater.on('error', (err) => {
+    console.log(err)
+    dialog.showMessageBox({
+      type: 'err',
+      title: '应用更新',
+      message: err
+    })
+  })
+  
+  //监听'update-available'事件，发现有新版本时触发
+  autoUpdater.on('update-available', () => {
+    console.log('found new version')
+    dialog.showMessageBox({
+      type: 'info',
+      title: '应用更新',
+      message: 'found new version'
+    })
+  })
+  
+  autoUpdater.autoDownload = true
+  //默认会自动下载新版本，如果不想自动下载，设置autoUpdater.autoDownload = false
+  
+  //监听'update-downloaded'事件，新版本下载完成时触发
+  autoUpdater.on('update-downloaded', () => {
+    dialog.showMessageBox({
+      type: 'info',
+      title: '应用更新',
+      message: '发现新版本，是否更新？',
+      buttons: ['是', '否']
+    }).then((buttonIndex) => {
+      if(buttonIndex.response === 0) {  //选择是，则退出程序，安装新版本
+        autoUpdater.quitAndInstall() 
+        app.quit()
+      }
+    })
+  })
+}
+
 function createWindow() {
   // Create the browser window.
   // 创建浏览器窗口
@@ -55,7 +118,16 @@ function createWindow() {
 // Some APIs can only be used after this event occurs.
 // 当Electron完成初始化并且已经创建了浏览器窗口，则该方法将会被调用。
 // 有些API只能在该事件发生后才能被使用。
-app.on('ready', createWindow);
+app.on('ready', () => {
+  //每次启动程序，就检查更新
+    dialog.showMessageBox({
+      type: 'info',
+      title: 'ready',
+      message: 'ready'
+    })
+  checkUpdate()
+  createWindow();
+});
 
 // Quit when all windows are closed.
 // 当所有的窗口被关闭后退出应用

@@ -31,7 +31,7 @@
   "private": true,
   "author": "ifor <ifor@cloras.io>",
   "scripts": {
-    "ebm": "yarn build && electron-builder build --win",
+    "ebm": "yarn build && electron-builder --win",
     "eb": "yarn build && electron .",
     "dev": "max dev",
     "build": "max build",

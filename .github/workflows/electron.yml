@@ -15,7 +15,7 @@ jobs:
   release:
     # job's name
     name: build and release electron app
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     # the type of machine to run the job on
     # runs-on: ${{ matrix.os }}
 

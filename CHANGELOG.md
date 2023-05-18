@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.12](https://github.com/if0r/electron-umi/compare/v0.0.11...v0.0.12) (2023-05-18)
+
+
+### Features
+
+* with build all ([a68ccfd](https://github.com/if0r/electron-umi/commit/a68ccfdf1a8d6efd62362afe85bf6055d8c7275d))
+
 ### [0.0.11](https://github.com/if0r/electron-umi/compare/v0.0.10...v0.0.11) (2023-05-18)
 
 

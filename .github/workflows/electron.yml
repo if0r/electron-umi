@@ -45,7 +45,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install wine64
-          sudo apt-get install --no-install-recommends -y gcc-multilib g++-multilib
+          dpkg --add-architecture i386 && apt-get update && apt-get install wine32
           wine --version
 
       # step4: build app for mac

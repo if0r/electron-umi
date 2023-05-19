@@ -41,6 +41,12 @@ jobs:
       - name: yarn install
         run: yarn install
 
+      - name: wine install
+        run: |
+          sudo apt update
+          sudo apt install wine64
+          wine --version
+
       # step4: build app for mac
       - name: yarn build
         run: |

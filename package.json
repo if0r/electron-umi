@@ -1,6 +1,6 @@
 {
   "name": "electron-umi",
-  "description": "`@umijs/max` 模板项目，更多功能参考 [Umi Max 简介](https://umijs.org/docs/max/introduce)",
+  "description": "`Electron Umi test",
   "version": "0.0.16",
   "homepage": ".",
   "main": "main.js",
@@ -8,6 +8,25 @@
     "appId": "ElectronUmi",
     "directories": {
       "output": "build"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "ElectronUmi",
+      "runAfterFinish": true
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
     },
     "files": [
       "dist/**/*",

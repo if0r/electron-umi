@@ -54,7 +54,6 @@ function checkUpdate(){
     })
   })
   
-  autoUpdater.autoDownload = true
   //默认会自动下载新版本，如果不想自动下载，设置autoUpdater.autoDownload = false
   
   //监听'update-downloaded'事件，新版本下载完成时触发
@@ -120,11 +119,6 @@ function createWindow() {
 // 有些API只能在该事件发生后才能被使用。
 app.on('ready', () => {
   //每次启动程序，就检查更新
-    dialog.showMessageBox({
-      type: 'info',
-      title: 'ready',
-      message: 'ready'
-    })
   checkUpdate()
   createWindow();
 });

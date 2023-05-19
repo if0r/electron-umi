@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.17-5](https://github.com/if0r/electron-umi/compare/v0.0.17-4...v0.0.17-5) (2023-05-19)
+
+
+### Features
+
+* install wine [#5](https://github.com/if0r/electron-umi/issues/5) ([8db5a8a](https://github.com/if0r/electron-umi/commit/8db5a8a8f46918a69cde52a2541bdc7ca2ce98d8))
+
 ### [0.0.17-4](https://github.com/if0r/electron-umi/compare/v0.0.17-3...v0.0.17-4) (2023-05-19)
 
 

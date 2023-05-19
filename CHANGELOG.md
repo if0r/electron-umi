@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.17](https://github.com/if0r/electron-umi/compare/v0.0.16...v0.0.17) (2023-05-19)
+
+
+### Features
+
+* update nsis setting ([a630481](https://github.com/if0r/electron-umi/commit/a6304819d45ba4ba54799fd6dbeedc0e5a47ed93))
+
 ### [0.0.16](https://github.com/if0r/electron-umi/compare/v0.0.15...v0.0.16) (2023-05-19)
 
 

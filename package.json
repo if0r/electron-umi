@@ -11,12 +11,8 @@
     },
     "files": [
       "dist/**/*",
-      "main.js",
-      "installer.nsh"
+      "main.js"
     ],
-    "nsis": {
-      "include": "installer.nsh"
-    },
     "compression": "store",
     "asar": "true"
   },

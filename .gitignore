@@ -38,6 +38,7 @@ screenshot
 .firebase
 .eslintcache
 
+updater
 build
 config/.openapi*
 mock

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.13](https://github.com/if0r/electron-umi/compare/v0.0.12...v0.0.13) (2023-05-19)
+
+
+### Features
+
+* remove installer.nsh ([023e70b](https://github.com/if0r/electron-umi/commit/023e70b11768c32761015e63f5755ecdfeae14bc))
+
 ### [0.0.12](https://github.com/if0r/electron-umi/compare/v0.0.11...v0.0.12) (2023-05-18)
 
 

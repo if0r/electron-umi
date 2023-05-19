@@ -66,6 +66,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/v')
         with:
-          files: "build/**"
+          files: "build/*.?(yml|exe)"
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }} 

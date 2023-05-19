@@ -47,6 +47,8 @@ jobs:
           sudo apt install wine64
           dpkg --add-architecture i386 && apt-get update && apt-get install wine32
           wine --version
+        env:       
+          GH_TOKEN: ${{ secrets.GH_TOKEN }} 
 
       # step4: build app for mac
       - name: yarn build

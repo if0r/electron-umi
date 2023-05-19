@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.16](https://github.com/if0r/electron-umi/compare/v0.0.15...v0.0.16) (2023-05-19)
+
+
+### Features
+
+* add yarn.lock ([9bfa9c3](https://github.com/if0r/electron-umi/commit/9bfa9c38d6c1bc916bdd52dccc1c5c52a693cf86))
+
 ### [0.0.15](https://github.com/if0r/electron-umi/compare/v0.0.14...v0.0.15) (2023-05-19)
 
 

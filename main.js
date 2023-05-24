@@ -11,7 +11,7 @@ const url = require('url');
 let mainWindow;
 
 function checkUpdate(){
-  autoUpdater.setFeedURL('http://192.168.1.79:8080/updater/')  //设置要检测更新的路径
+  // autoUpdater.setFeedURL('http://192.168.1.79:8080/updater/')  //设置要检测更新的路径
   
   //检测更新
   autoUpdater.checkForUpdates().then(it => {

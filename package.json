@@ -6,6 +6,13 @@
   "main": "main.js",
   "build": {
     "appId": "ElectronUmi",
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "if0r",
+        "repo": "electron-umi"
+      }
+    ],
     "directories": {
       "output": "build"
     },

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.26](https://github.com/if0r/electron-umi/compare/v0.0.25...v0.0.26) (2023-05-24)
+
+
+### Features
+
+* update to use artifactName ([521cca5](https://github.com/if0r/electron-umi/commit/521cca54eb3170cba222ad0e8a17489d3670c311))
+
 ### [0.0.25](https://github.com/if0r/electron-umi/compare/v0.0.24...v0.0.25) (2023-05-24)
 
 ### [0.0.24](https://github.com/if0r/electron-umi/compare/v0.0.21...v0.0.24) (2023-05-24)

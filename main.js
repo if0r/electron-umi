@@ -1,5 +1,5 @@
 // 引入electron并创建一个Browserwindow
-const { app, BrowserWindow, protocol, session, dialog } = require('electron');
+const { app, BrowserWindow, protocol, session, dialog, ipcMain } = require('electron');
 const { autoUpdater } = require('electron-updater');
 const path = require('path');
 const url = require('url');
@@ -16,8 +16,8 @@ function checkUpdate(){
   
   //检测更新
   autoUpdater.checkForUpdates().then(it => {
-    const downloadPromise = it.downloadPromise
-    if (downloadPromise === null) {
+    const downloadPromise = it?.downloadPromise
+    if (downloadPromis === null) {
       dialog.showMessageBox({
         type: 'info',
         title: 'info',
@@ -26,7 +26,7 @@ function checkUpdate(){
       return
     }
 
-    downloadPromise.then(() => {
+    downloadPromise?.then(() => {
       dialog.showMessageBox({
         type: 'info',
         title: 'info',

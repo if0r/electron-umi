@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.27](https://github.com/if0r/electron-umi/compare/v0.0.26...v0.0.27) (2023-05-24)
+
+
+### Features
+
+* add DownloadProgressBar ([dc86d4e](https://github.com/if0r/electron-umi/commit/dc86d4e729cc6246bd3b0fb320f207a3e8259d93))
+
 ### [0.0.26](https://github.com/if0r/electron-umi/compare/v0.0.25...v0.0.26) (2023-05-24)
 
 

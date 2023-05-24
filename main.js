@@ -11,7 +11,8 @@ const url = require('url');
 let mainWindow;
 
 function checkUpdate(){
-  autoUpdater.setFeedURL('http://192.168.1.79:8080/updater/')  //设置要检测更新的路径
+  const feedURL = `https://github.com/if0r/electron-umi/releases/latest`; // 'http://192.168.1.79:8080/updater/'
+  autoUpdater.setFeedURL(feedURL)  //设置要检测更新的路径
   
   //检测更新
   autoUpdater.checkForUpdates().then(it => {

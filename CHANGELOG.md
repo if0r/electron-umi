@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.18-1](https://github.com/if0r/electron-umi/compare/v0.0.28...v0.0.18-1) (2023-05-24)
+
+
+### Bug Fixes
+
+* ipcRenderer import ([c1f94de](https://github.com/if0r/electron-umi/commit/c1f94de7edb46992246b8cd06f87946d8c78b333))
+
 ### [0.0.28](https://github.com/if0r/electron-umi/compare/v0.0.27...v0.0.28) (2023-05-24)
 
 ### [0.0.27](https://github.com/if0r/electron-umi/compare/v0.0.26...v0.0.27) (2023-05-24)

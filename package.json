@@ -6,6 +6,7 @@
   "main": "main.js",
   "build": {
     "appId": "ElectronUmi",
+    "artifactName": "${productName}-Setup-${version}.${ext}",
     "directories": {
       "output": "build"
     },

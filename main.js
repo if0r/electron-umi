@@ -54,6 +54,12 @@ function checkUpdate(){
       message: 'found new version'
     })
   })
+
+  // 監聽自動更新下載進度事件
+  autoUpdater.on('download-progress', progress => {
+    // 向渲染進程傳送下載進度
+    mainWindow.webContents.send('download-progress', progress);
+  });
   
   //默认会自动下载新版本，如果不想自动下载，设置autoUpdater.autoDownload = false
   
@@ -139,3 +145,14 @@ app.on('activate', function () {
   // 对于OS X系统，当dock图标被点击后会重新创建一个app窗口，并且不会有其他窗口打开
   if (mainWindow === null) createWindow();
 });
+
+// 在下載進度條畫面設定中，可以使用以下程式碼接收下載進度
+ipcMain.on('start-download', () => {
+  autoUpdater.downloadUpdate();
+});
+
+// // 監聽渲染進程發送的檢查更新事件
+// ipcMain.on('check-for-updates', () => {
+//   // 開始檢查更新
+//   autoUpdater.checkForUpdates();
+// });

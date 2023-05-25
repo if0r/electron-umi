@@ -48,7 +48,7 @@
   "author": "ifor <ifor@cloras.io>",
   "scripts": {
     "build:electron": "yarn build && electron-builder --win",
-    "start:electron": "yarn build && electron .",
+    "start:electron": "electron . --local",
     "dev": "max dev",
     "build": "max build",
     "format": "prettier --cache --write .",
@@ -75,6 +75,7 @@
     "prettier-plugin-organize-imports": "^3.2.2",
     "prettier-plugin-packagejson": "^2.4.3",
     "standard-version": "^9.5.0",
-    "typescript": "^5.0.3"
+    "typescript": "^5.0.3",
+    "wait-on": "^7.0.1"
   }
 }

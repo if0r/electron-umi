@@ -3,15 +3,19 @@ const { app, BrowserWindow, protocol, session, dialog } = require('electron');
 const { autoUpdater } = require('electron-updater');
 const path = require('path');
 const url = require('url');
+const { exec } = require('child_process');
 
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 // 保持window对象的全局引用,避免JavaScript对象被垃圾回收时,窗口被自动关闭.
 let mainWindow;
+let antdServerProcess;
+const localServerUrl = 'http://localhost:8000';
+const isLocal = process.argv.includes('--local');
 
 function checkUpdate(){
-  const feedURL = `https://github.com/if0r/electron-umi/releases/latest`; // 'http://192.168.1.79:8080/updater/'
+  const feedURL = 'http://192.168.1.79:8080/updater/'
   autoUpdater.setFeedURL(feedURL)  //设置要检测更新的路径
   
   //检测更新
@@ -93,6 +97,10 @@ function createWindow() {
 
     //打包时加载本地文件
     // 加载应用 electron-quick-start中默认的加载入口
+  if (isLocal) {
+    // 載入本地伺服器網頁
+    mainWindow.loadURL(localServerUrl);
+  } else {
     mainWindow.loadURL(
       url.format({
         pathname: path.join(__dirname, 'dist/index.html'),
@@ -100,6 +108,7 @@ function createWindow() {
         slashes: true,
       }),
     );
+  }
 
   // Emitted when the window is closed.
   // 当窗口关闭时调用的方法
@@ -109,6 +118,9 @@ function createWindow() {
     // when you should delete the corresponding element.
     // 解除窗口对象的引用，通常而言如果应用支持多个窗口的话，你会在一个数组里
     // 存放窗口对象，在窗口关闭的时候应当删除相应的元素。
+    if (isLocal) {
+      antdServerProcess?.kill();
+    }
     mainWindow = null;
   });
 }
@@ -119,9 +131,27 @@ function createWindow() {
 // 当Electron完成初始化并且已经创建了浏览器窗口，则该方法将会被调用。
 // 有些API只能在该事件发生后才能被使用。
 app.on('ready', () => {
-  //每次启动程序，就检查更新
-  checkUpdate()
-  createWindow();
+  if (isLocal) {
+    // 启动 Antd Pro 服务器
+    antdServerProcess = exec('yarn start');
+    const waitOn = require('wait-on');
+
+    // 等待 Antd Pro 本地服务器启动完成
+    waitOn({
+      resources: [localServerUrl],
+    })
+      .then(() => {
+        console.log('Antd Pro server is running');
+        createWindow();
+      })
+      .catch((error) => {
+        console.error('Antd Pro start fail', error);
+      });
+  } else {
+    //每次启动程序，就检查更新
+    checkUpdate();
+    createWindow();
+  }
 });
 
 // Quit when all windows are closed.
@@ -129,8 +159,9 @@ app.on('ready', () => {
 app.on('window-all-closed', function () {
   // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
+  app.quit();
   // 对于OS X系统，应用和相应的菜单栏会一直激活直到用户通过Cmd + Q显式退出
-  if (process.platform !== 'darwin') app.quit();
+  // if (process.platform !== 'darwin') app.quit();
 });
 
 app.on('activate', function () {

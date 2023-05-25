@@ -48,6 +48,7 @@ jobs:
           ls build/
         env:       
           ELECTRON_BUILD: 'true'
+          GH_TOKEN: ${{ secrets.GH_TOKEN }} 
           
       # step6: upload artifacts
       # - name: upload artifacts

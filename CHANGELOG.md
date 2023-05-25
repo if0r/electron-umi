@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.31](https://github.com/if0r/electron-umi/compare/v0.0.30...v0.0.31) (2023-05-25)
+
+
+### Features
+
+*  add locale electron run ([c0584aa](https://github.com/if0r/electron-umi/commit/c0584aafae7955277760412f7de84afd8201e2ae))
+
 ### [0.0.30](https://github.com/if0r/electron-umi/compare/v0.0.26...v0.0.30) (2023-05-25)
 
 

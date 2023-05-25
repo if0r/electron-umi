@@ -1,7 +1,7 @@
 {
   "name": "electron-umi",
   "description": "`Electron Umi test",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "homepage": ".",
   "main": "main.js",
   "build": {

@@ -47,8 +47,8 @@
   "private": true,
   "author": "ifor <ifor@cloras.io>",
   "scripts": {
-    "ebm": "yarn build && electron-builder --win",
-    "eb": "yarn build && electron .",
+    "build:electron": "yarn build && electron-builder --win",
+    "start:electron": "yarn build && electron .",
     "dev": "max dev",
     "build": "max build",
     "format": "prettier --cache --write .",

@@ -5,8 +5,9 @@ name: Build Electron App # For Win/Mac
 # Workflow's trigger
 on:
   push:
-    tags:
-      - "v*.*.*"
+    branches: [main]
+    # tags:
+    #   - "v*.*.*"
 
 
 # Workflow's jobs

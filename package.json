@@ -11,9 +11,7 @@
       "output": "build"
     },
     "nsis": {
-      "oneClick": false,
-      "allowElevation": true,
-      "allowToChangeInstallationDirectory": true,
+      "oneClick": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
       "shortcutName": "ElectronUmi",

@@ -16,7 +16,7 @@ const isLocal = process.argv.includes('--local');
 
 function checkUpdate(){
   const feedURL = 'http://192.168.1.79:8080/updater/'
-  autoUpdater.setFeedURL({ url: feedURL })  //设置要检测更新的路径
+  autoUpdater.setFeedURL(feedURL)  //设置要检测更新的路径
   
   //检测更新
   autoUpdater.checkForUpdates().then(it => {

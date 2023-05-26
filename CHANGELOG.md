@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.35](https://github.com/if0r/electron-umi/compare/v0.0.34...v0.0.35) (2023-05-26)
+
+
+### Bug Fixes
+
+* update autoUpdater.setFeedURL ([16de918](https://github.com/if0r/electron-umi/commit/16de918ab01582560dc533b3219f0b1e0f4d3aed))
+
 ### [0.0.34](https://github.com/if0r/electron-umi/compare/v0.0.33...v0.0.34) (2023-05-26)
 
 ### [0.0.33](https://github.com/if0r/electron-umi/compare/v0.0.32...v0.0.33) (2023-05-26)

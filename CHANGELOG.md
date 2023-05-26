@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.37](https://github.com/if0r/electron-umi/compare/v0.0.36...v0.0.37) (2023-05-26)
+
+
+### Bug Fixes
+
+* to use oneClick ([2bdb388](https://github.com/if0r/electron-umi/commit/2bdb38841e118105ed32ec0156505a88dfcb8c44))
+
 ### [0.0.36](https://github.com/if0r/electron-umi/compare/v0.0.35...v0.0.36) (2023-05-26)
 
 ### [0.0.35](https://github.com/if0r/electron-umi/compare/v0.0.34...v0.0.35) (2023-05-26)

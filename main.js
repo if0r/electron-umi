@@ -16,7 +16,7 @@ const isLocal = process.argv.includes('--local');
 
 function checkUpdate(){
   const feedURL = 'http://192.168.1.79:8080/updater/'
-  autoUpdater.setFeedURL(feedURL)  //设置要检测更新的路径
+  autoUpdater.setFeedURL({ url: feedURL })  //设置要检测更新的路径
   
   //检测更新
   autoUpdater.checkForUpdates().then(it => {
@@ -41,39 +41,56 @@ function checkUpdate(){
   
   //监听'error'事件
   autoUpdater.on('error', (err) => {
-    console.log(err)
     dialog.showMessageBox({
       type: 'err',
-      title: '应用更新',
+      title: '更新',
       message: err
     })
   })
   
   //监听'update-available'事件，发现有新版本时触发
   autoUpdater.on('update-available', () => {
-    console.log('found new version')
-    dialog.showMessageBox({
+    // 有可用的更新
+    dialog.showMessageBox(mainWindow, {
       type: 'info',
-      title: '应用更新',
-      message: 'found new version'
-    })
+      buttons: [],
+      title: '更新可用',
+      message: '有新版本的應用程式可供下載和安裝。',
+      detail: '正在下載更新，請稍候...'
+    });
+
+    // 阻止使用者操作
+    mainWindow.setEnabled(false);
   })
   
+  autoUpdater.on('update-not-available', () => {
+    // 沒有可用的更新
+    // 這裡可以顯示提示訊息告知使用者沒有新版本
+    dialog.showMessageBox({
+      type: 'info',
+      title: '更新',
+      message: '沒有可用的更新'
+    })
+  });
+
+
   //默认会自动下载新版本，如果不想自动下载，设置autoUpdater.autoDownload = false
   
   //监听'update-downloaded'事件，新版本下载完成时触发
   autoUpdater.on('update-downloaded', () => {
-    dialog.showMessageBox({
-      type: 'info',
-      title: '应用更新',
-      message: '发现新版本，是否更新？',
-      buttons: ['是', '否']
-    }).then((buttonIndex) => {
-      if(buttonIndex.response === 0) {  //选择是，则退出程序，安装新版本
-        autoUpdater.quitAndInstall() 
-        app.quit()
-      }
-    })
+    // 在更新下載完成後觸發的程式碼
+    const response = dialog.showMessageBoxSync({
+      type: 'question',
+      buttons: ['是'],
+      defaultId: 0,
+      message: '新版本已下載完成，是否立即安裝？',
+      title: '更新可用'
+    });
+  
+    if (response === 0) { // 如果使用者選擇「是」
+      autoUpdater.quitAndInstall(); // 強制退出並安裝更新
+      app.quit()
+    }
   })
 }
 

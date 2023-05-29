@@ -106,7 +106,7 @@ function createWindow() {
     // transparent: false,
     webPreferences: {
       // preload: path.join(__dirname, 'preload.js'),
-      webSecurity: false, // 關閉安全策略
+      // webSecurity: false, // 關閉安全策略
       nodeIntegration: true,
       allowRunningInsecureContent: true,
     },
@@ -119,20 +119,14 @@ function createWindow() {
   // request前解析轉址
   mainWindow.webContents.session.webRequest.onBeforeRequest(
     { urls: ['file://*'] },
-    function (details, callback) {
-      const pathUrl = details.url.substring(7); // 去掉 "file:///" 部分
-
+    (details, callback) => {
+      const pathUrl = details.url.replace(/^[A-Za-z]:\//, "").replace("file:///", ""); // 去掉 "file:///" 部分
       if ((pathUrl.endsWith('.png') || pathUrl.endsWith('.jpg')) && !pathUrl.includes('dist')) {
         const modifiedURL = path.join('file:', __dirname, 'dist', pathUrl);
         dialog.showMessageBox({
           type: 'info',
           title: 'details.url',
-          message: details.url,
-        });
-        dialog.showMessageBox({
-          type: 'info',
-          title: 'modifiedURL',
-          message: modifiedURL,
+          message:  details.url + '\n\n' + pathUrl +'\n\n' + modifiedURL,
         });
 
         // 圖片另外定位

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.44](https://github.com/if0r/electron-umi/compare/v0.0.43...v0.0.44) (2023-05-29)
+
+
+### Features
+
+* sfasf ([6232cf5](https://github.com/if0r/electron-umi/commit/6232cf59244f634f5617be06a1f8d5b994e8a525))
+
 ### [0.0.43](https://github.com/if0r/electron-umi/compare/v0.0.41...v0.0.43) (2023-05-29)
 
 

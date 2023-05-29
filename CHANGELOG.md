@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.41](https://github.com/if0r/electron-umi/compare/v0.0.37...v0.0.41) (2023-05-29)
+
+
+### Features
+
+* image test ([71d8d9e](https://github.com/if0r/electron-umi/commit/71d8d9e603d11e554a57198e9f7b21d07c3ceef5))
+* mother fu... ([981ca6e](https://github.com/if0r/electron-umi/commit/981ca6e571cddd1a68d76045a992156ddaf2d80e))
+
 ### [0.0.37](https://github.com/if0r/electron-umi/compare/v0.0.36...v0.0.37) (2023-05-26)
 
 

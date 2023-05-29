@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.40](https://github.com/if0r/electron-umi/compare/v0.0.39...v0.0.40) (2023-05-29)
+
+
+### Features
+
+* remove appPath ([97876d5](https://github.com/if0r/electron-umi/commit/97876d51c88c3f612ee3361d015377f32adc9922))
+
 ### [0.0.39](https://github.com/if0r/electron-umi/compare/v0.0.38...v0.0.39) (2023-05-29)
 
 

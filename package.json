@@ -1,6 +1,6 @@
 {
   "name": "electron-umi",
-  "description": "`Electron Umi test",
+  "description": "Electron Umi test",
   "version": "0.0.37",
   "homepage": ".",
   "main": "main.js",

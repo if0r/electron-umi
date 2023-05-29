@@ -1,7 +1,7 @@
 {
   "name": "electron-umi",
   "description": "Electron Umi test",
-  "version": "0.0.37",
+  "version": "0.0.40",
   "homepage": ".",
   "main": "main.js",
   "build": {
@@ -46,6 +46,8 @@
   "author": "ifor <ifor@cloras.io>",
   "scripts": {
     "build:electron": "yarn build && electron-builder --win",
+    "build:electron-mac": "yarn build && electron-builder --mac",
+    "build:electron-test": "yarn build && electron .",
     "start:electron": "electron . --local",
     "dev": "max dev",
     "build": "max build",

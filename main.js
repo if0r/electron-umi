@@ -120,7 +120,7 @@ function createWindow() {
   mainWindow.webContents.session.webRequest.onBeforeRequest(
     { urls: ['file://*'] },
     (details, callback) => {
-      const pathUrl = details.url.replace(/^[A-Za-z]:\//, "").replace("file:///", ""); // 去掉 "file:///" 部分
+      const pathUrl = details.url.replace(/^file:(\/{3})([A-Za-z]:\/)?/, ""); // 去掉 "file:///" 或 "file:///C:/" 部分
       if ((pathUrl.endsWith('.png') || pathUrl.endsWith('.jpg')) && !pathUrl.includes('dist')) {
         const modifiedURL = path.join('file:', __dirname, 'dist', pathUrl);
         dialog.showMessageBox({

@@ -120,20 +120,14 @@ function createWindow() {
   mainWindow.webContents.session.webRequest.onBeforeRequest(
     { urls: ['file://*'] },
     function (details, callback) {
-      const relativePath = details.url.substr(7); // 去掉 "file:///" 部分
-      const newFilePath = path.join(appPath, relativePath);
+      const relativePath = details.url.substring(7); // 去掉 "file:///" 部分
 
       if ((pathUrl.endsWith('.png') || pathUrl.endsWith('.jpg')) && !pathUrl.includes('dist')) {
-        const modifiedURL = path.join(appPath, __dirname, 'dist', relativePath);
+        const modifiedURL = path.join(__dirname, 'dist', relativePath);
         dialog.showMessageBox({
           type: 'info',
           title: 'details.url',
           message: details.url,
-        });
-        dialog.showMessageBox({
-          type: 'info',
-          title: 'newFilePath',
-          message: newFilePath,
         });
         dialog.showMessageBox({
           type: 'info',
@@ -185,11 +179,6 @@ function createWindow() {
 // 当Electron完成初始化并且已经创建了浏览器窗口，则该方法将会被调用。
 // 有些API只能在该事件发生后才能被使用。
 app.on('ready', () => {
-  dialog.showMessageBox({
-    type: 'info',
-    title: '__dirname',
-    message: __dirname,
-  });
   if (isLocal) {
     // 启动 Antd Pro 服务器
     antdServerProcess = exec('yarn start');

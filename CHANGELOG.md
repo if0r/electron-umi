@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.47](https://github.com/if0r/electron-umi/compare/v0.0.46...v0.0.47) (2023-05-30)
+
+
+### Features
+
+* add download-progress ([1513f8b](https://github.com/if0r/electron-umi/commit/1513f8b1d672c9b68285782aa376e8a75184ad1e))
+
 ### [0.0.46](https://github.com/if0r/electron-umi/compare/v0.0.45...v0.0.46) (2023-05-30)
 
 ### [0.0.45](https://github.com/if0r/electron-umi/compare/v0.0.44...v0.0.45) (2023-05-30)

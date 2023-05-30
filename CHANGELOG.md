@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.45](https://github.com/if0r/electron-umi/compare/v0.0.44...v0.0.45) (2023-05-30)
+
+
+### Features
+
+* 45 ([e654754](https://github.com/if0r/electron-umi/commit/e654754c9e86bb64e98b8b4745e5bf9967c2605d))
+* add preload ([f8f0ef4](https://github.com/if0r/electron-umi/commit/f8f0ef43e2a831e685517849bb44021e42fe5311))
+
 ### [0.0.44](https://github.com/if0r/electron-umi/compare/v0.0.43...v0.0.44) (2023-05-29)
 
 

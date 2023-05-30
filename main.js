@@ -1,5 +1,5 @@
 // 引入electron并创建一个Browserwindow
-const { app, BrowserWindow, protocol, session, dialog } = require('electron');
+const { app, BrowserWindow, protocol, session, dialog, ipcMain } = require('electron');
 const { autoUpdater } = require('electron-updater');
 const path = require('path');
 const url = require('url');
@@ -45,13 +45,14 @@ function checkUpdate(){
   //监听'update-available'事件，发现有新版本时触发
   autoUpdater.on('update-available', () => {
     // 有可用的更新
-    dialog.showMessageBox(mainWindow, {
-      type: 'info',
-      buttons: [],
-      title: '更新可用',
-      message: '有新版本的應用程式可供下載和安裝。',
-      detail: '正在下載更新，請稍候...'
-    });
+    // dialog.showMessageBox(mainWindow, {
+    //   type: 'info',
+    //   buttons: [],
+    //   title: '更新可用',
+    //   message: '有新版本的應用程式可供下載和安裝。',
+    //   detail: '正在下載更新，請稍候...'
+    // });
+    mainWindow?.webContents?.send("fromMain", true);
 
     // 阻止使用者操作
     mainWindow.setEnabled(false);
@@ -73,18 +74,21 @@ function checkUpdate(){
   //监听'update-downloaded'事件，新版本下载完成时触发
   autoUpdater.on('update-downloaded', () => {
     // 在更新下載完成後觸發的程式碼
-    const response = dialog.showMessageBoxSync({
-      type: 'question',
-      buttons: ['是'],
-      defaultId: 0,
-      message: '新版本已下載完成，是否立即安裝？',
-      title: '更新可用'
-    });
+    // const response = dialog.showMessageBoxSync({
+    //   type: 'question',
+    //   buttons: ['是'],
+    //   defaultId: 0,
+    //   message: '新版本已下載完成，是否立即安裝？',
+    //   title: '更新可用'
+    // });
+    mainWindow?.webContents?.send("fromMain", false);
+    autoUpdater.quitAndInstall(); // 強制退出並安裝更新
+    app.quit()
   
-    if (response === 0) { // 如果使用者選擇「是」
-      autoUpdater.quitAndInstall(); // 強制退出並安裝更新
-      app.quit()
-    }
+    // if (response === 0) { // 如果使用者選擇「是」
+    //   autoUpdater.quitAndInstall(); // 強制退出並安裝更新
+    //   app.quit()
+    // }
   })
 }
 
@@ -99,9 +103,13 @@ function createWindow() {
     // fullscreenable: true,
     // transparent: false,
     webPreferences: {
-      // preload: path.join(__dirname, 'preload.js'),
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: false, // is default value after Electron v5
+      contextIsolation: true, // protect against prototype pollution
+      enableRemoteModule: false, // turn off remote
+      // contextIsolation: false,    // 讓在 preload.js 的定義可以傳遞到 Render Process (React)
       // webSecurity: false, // 關閉安全策略
-      nodeIntegration: true,
+      // nodeIntegration: true,
       allowRunningInsecureContent: true,
     },
   });
@@ -117,11 +125,6 @@ function createWindow() {
       const pathUrl = details.url.replace(/^file:(\/{3})([A-Za-z]:\/)?/, ""); // 去掉 "file:///" 或 "file:///C:/" 部分
       if ((pathUrl.endsWith('.png') || pathUrl.endsWith('.jpg')) && !pathUrl.includes('dist')) {
         const modifiedURL = path.join('file:', __dirname, 'dist', pathUrl);
-        dialog.showMessageBox({
-          type: 'info',
-          title: 'details.url',
-          message:  details.url + '\n\n' + pathUrl +'\n\n' + modifiedURL,
-        });
 
         // 圖片另外定位
         callback({ redirectURL: modifiedURL });
@@ -188,6 +191,9 @@ app.on('ready', () => {
     checkUpdate();
     createWindow();
   }
+
+  // 打开开发者工具
+  mainWindow.webContents.openDevTools();
 });
 
 // Quit when all windows are closed.

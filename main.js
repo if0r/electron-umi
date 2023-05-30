@@ -5,7 +5,6 @@ const path = require('path');
 const url = require('url');
 const { exec } = require('child_process');
 
-
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 // 保持window对象的全局引用,避免JavaScript对象被垃圾回收时,窗口被自动关闭.
@@ -20,13 +19,8 @@ function checkUpdate(){
   
   //检测更新
   autoUpdater.checkForUpdates().then(it => {
-    const downloadPromise = it.downloadPromise
-    if (downloadPromise === null) {
-      dialog.showMessageBox({
-        type: 'info',
-        title: 'info',
-        message: 'downloadPromise === null'
-      })
+    const downloadPromise = it?.downloadPromise
+    if (!downloadPromise) {
       return
     }
 

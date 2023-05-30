@@ -29,7 +29,8 @@
     },
     "files": [
       "dist/**/*",
-      "main.js"
+      "main.js",
+      "preload.js"
     ],
     "compression": "store",
     "asar": "true"

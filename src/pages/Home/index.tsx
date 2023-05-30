@@ -11,16 +11,16 @@ const { electronApi } = window as any;
 
 const HomePage: React.FC = () => {
   const { name } = useModel('global');
-  const [isUpdating, setIsUpdating] = useState(false)
+  const [isUpdating, setIsUpdating] = useState(0)
   useEffect(()=> {
-    electronApi.receive("fromMain", (data: boolean) => {
+    electronApi.receive("fromMain", (data: any) => {
       console.warn('fromMain', data)
       setIsUpdating(data)
     });  
     // electronApi.send("toMain", "some data");
   },[])
   return (
-    <Spin spinning={isUpdating} tip="有更新 自動更新下載中">
+    <Spin spinning={!!isUpdating} tip={"有更新 自動更新下載中"+isUpdating}>
     <PageContainer ghost>
       <div className={styles.container}>
         <Guide name={trim(name)} />

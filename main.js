@@ -58,6 +58,12 @@ function checkUpdate(){
     mainWindow.setEnabled(false);
   })
   
+  // 監聽下載進度事件
+  autoUpdater.on('download-progress', progress => {
+    // 傳送進度資訊給渲染進程
+    mainWindow?.webContents?.send('fromMain', progress);
+  });
+
   autoUpdater.on('update-not-available', () => {
     // 沒有可用的更新
     // 這裡可以顯示提示訊息告知使用者沒有新版本
@@ -174,7 +180,6 @@ app.on('ready', () => {
     // 启动 Antd Pro 服务器
     antdServerProcess = exec('yarn start');
     const waitOn = require('wait-on');
-
     // 等待 Antd Pro 本地服务器启动完成
     waitOn({
       resources: [localServerUrl],

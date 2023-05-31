@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.51-2](https://github.com/if0r/electron-umi/compare/v0.0.51-1...v0.0.51-2) (2023-05-31)
+
+
+### Features
+
+* hide devtools ([c821287](https://github.com/if0r/electron-umi/commit/c821287c41910c7915643eb507cee8ba80488c3d))
+
 ### [0.0.51-1](https://github.com/if0r/electron-umi/compare/v0.0.51-0...v0.0.51-1) (2023-05-31)
 
 ### [0.0.51-0](https://github.com/if0r/electron-umi/compare/v0.0.50...v0.0.51-0) (2023-05-31)

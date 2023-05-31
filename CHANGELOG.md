@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.51-0](https://github.com/if0r/electron-umi/compare/v0.0.50...v0.0.51-0) (2023-05-31)
+
+
+### Features
+
+* add progress modal ([9b70c98](https://github.com/if0r/electron-umi/commit/9b70c985d17d143a75b86c89305a193f6996a89f))
+
 ### [0.0.50](https://github.com/if0r/electron-umi/compare/v0.0.49...v0.0.50) (2023-05-30)
 
 ### [0.0.49](https://github.com/if0r/electron-umi/compare/v0.0.48...v0.0.49) (2023-05-30)

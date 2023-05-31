@@ -52,7 +52,7 @@ function checkUpdate(){
     //   message: '有新版本的應用程式可供下載和安裝。',
     //   detail: '正在下載更新，請稍候...'
     // });
-    mainWindow?.webContents?.send("fromMain", true);
+    mainWindow?.webContents?.send("fromMain", { hasUpdate: true, percent: 0 });
 
     // 阻止使用者操作
     mainWindow.setEnabled(false);
@@ -61,7 +61,7 @@ function checkUpdate(){
   // 監聽下載進度事件
   autoUpdater.on('download-progress', progress => {
     // 傳送進度資訊給渲染進程
-    mainWindow?.webContents?.send('fromMain', progress);
+    mainWindow?.webContents?.send('fromMain', { hasUpdate: true, percent: progress?.percent });
   });
 
   autoUpdater.on('update-not-available', () => {
@@ -87,7 +87,7 @@ function checkUpdate(){
     //   message: '新版本已下載完成，是否立即安裝？',
     //   title: '更新可用'
     // });
-    mainWindow?.webContents?.send("fromMain", false);
+    mainWindow?.webContents?.send("fromMain", { hasUpdate: false, percent: 100 });
     autoUpdater.quitAndInstall(); // 強制退出並安裝更新
     app.quit()
   

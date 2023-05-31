@@ -1,5 +1,5 @@
 // 引入electron并创建一个Browserwindow
-const { app, BrowserWindow, protocol, session, dialog, ipcMain } = require('electron');
+const { app, BrowserWindow, protocol, session, dialog, Menu } = require('electron');
 const { autoUpdater } = require('electron-updater');
 const path = require('path');
 const url = require('url');
@@ -36,8 +36,8 @@ function checkUpdate(){
   //监听'error'事件
   autoUpdater.on('error', (err) => {
     dialog.showMessageBox({
-      type: 'err',
-      title: '更新',
+      type: 'error',
+      title: '應用更新錯誤',
       message: err
     })
   })
@@ -105,9 +105,9 @@ function createWindow() {
     width: 1300,
     height: 800,
     // frame: true,
-    // autoHideMenuBar: true,
     // fullscreenable: true,
     // transparent: false,
+    title: require('./package.json')?.build?.appId,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: false, // is default value after Electron v5
@@ -119,6 +119,18 @@ function createWindow() {
       allowRunningInsecureContent: true,
     },
   });
+  
+  // 用來固定住不同route時 的應用程式標題
+  mainWindow.on('page-title-updated', function(e) {
+    e.preventDefault()
+  });
+
+  // 隱藏應用選單
+  if( process.platform === "darwin" ) {
+    Menu.setApplicationMenu(Menu.buildFromTemplate([]));
+  } else {
+    Menu.setApplicationMenu(null);
+  }
 
   session.defaultSession.webRequest.onBeforeSendHeaders((details, callback) => {
     details.requestHeaders['Referer'] = 'no-referrer'; // 或者其他適當的值

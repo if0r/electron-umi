@@ -55,24 +55,24 @@ function checkUpdate(){
     mainWindow?.webContents?.send("fromMain", { hasUpdate: true, percent: 0 });
 
     // 阻止使用者操作
-    mainWindow.setEnabled(false);
+    // mainWindow.setEnabled(false);
   })
   
   // 監聽下載進度事件
   autoUpdater.on('download-progress', progress => {
     // 傳送進度資訊給渲染進程
-    mainWindow?.webContents?.send('fromMain', { hasUpdate: true, percent: progress?.percent });
+    mainWindow?.webContents?.send('fromMain', { ...progress, hasUpdate: true });
   });
 
-  autoUpdater.on('update-not-available', () => {
-    // 沒有可用的更新
-    // 這裡可以顯示提示訊息告知使用者沒有新版本
-    dialog.showMessageBox({
-      type: 'info',
-      title: '更新',
-      message: '沒有可用的更新'
-    })
-  });
+  // autoUpdater.on('update-not-available', () => {
+  //   // 沒有可用的更新
+  //   // 這裡可以顯示提示訊息告知使用者沒有新版本
+  //   dialog.showMessageBox({
+  //     type: 'info',
+  //     title: '更新',
+  //     message: '沒有可用的更新'
+  //   })
+  // });
 
 
   //默认会自动下载新版本，如果不想自动下载，设置autoUpdater.autoDownload = false
@@ -198,7 +198,7 @@ app.on('ready', () => {
   }
 
   // 打开开发者工具
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 });
 
 // Quit when all windows are closed.
